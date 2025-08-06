@@ -35,7 +35,7 @@
         const { useState, useEffect } = React;
 
         const AUTHENTIK_DOMAIN = 'accounts.theboiismc.com'; // Your Authentik instance domain
-        const CLIENT_ID = 'YOUR_MYACCOUNT_APP_CLIENT_ID'; // Replace with the Client ID from Authentik provider
+        const CLIENT_ID = '7h5UUFHApH8lck0fNltULeyCMrlTaP5J3HqfFSYL'; // Replace with the Client ID from Authentik provider
         const REDIRECT_URI = 'https://myaccount.theboiismc.com/callback'; // Your app's callback URL
         const SCOPES = 'openid profile email'; // Request basic user info
 
@@ -69,7 +69,7 @@
                       },
                       body: new URLSearchParams({
                         grant_type: 'authorization_code',
-                        client_id: CLIENT_ID,
+                        client_id: 7h5UUFHApH8lck0fNltULeyCMrlTaP5J3HqfFSYL,
                         redirect_uri: REDIRECT_URI,
                         code: code,
                         code_verifier: storedVerifier, // PKCE verifier
@@ -139,7 +139,7 @@
                 // Construct the silent authentication URL with prompt=none
                 const silentAuthUrl = `https://${AUTHENTIK_DOMAIN}/application/o/authorize/?` +
                   `response_type=code&` +
-                  `client_id=${CLIENT_ID}&` +
+                  `client_id=${7h5UUFHApH8lck0fNltULeyCMrlTaP5J3HqfFSYL}&` +
                   `redirect_uri=${REDIRECT_URI}&` +
                   `scope=${SCOPES}&` +
                   `state=${newState}&` +
@@ -199,7 +199,7 @@
 
             const authUrl = `https://${AUTHENTIK_DOMAIN}/application/o/authorize/?` +
               `response_type=code&` +
-              `client_id=${CLIENT_ID}&` +
+              `client_id=${7h5UUFHApH8lck0fNltULeyCMrlTaP5J3HqfFSYL}&` +
               `redirect_uri=${REDIRECT_URI}&` +
               `scope=${SCOPES}&` +
               `state=${state}&` +
