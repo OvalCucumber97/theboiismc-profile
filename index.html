@@ -39,7 +39,7 @@
     }
   </script>
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://placehold.co data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://accounts.theboiismc.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://accounts.theboiismc.com;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -48,13 +48,13 @@
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
     .active-link {
-      background-color: #eff6ff; /* primary-blue-50 */
-      color: #2563eb; /* primary-blue-600 */
+      background-color: #eff6ff;
+      color: #2563eb;
       font-weight: 600;
       @apply dark:bg-primary-blue-900 dark:text-primary-blue-300;
     }
     .active-link .material-symbols-sharp {
-      color: #2563eb; /* primary-blue-600 */
+      color: #2563eb;
       @apply dark:text-primary-blue-300;
     }
   </style>
@@ -64,10 +64,10 @@
   <div class="flex min-h-screen">
     
     <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-xl p-4 flex-col justify-between 
-                                **hidden lg:flex fixed h-full z-20** transition-colors duration-300">
+                                hidden lg:flex fixed h-full z-20 transition-colors duration-300">
       <div>
         <div class="flex items-center space-x-3 mb-10 p-2 border-b border-gray-100 dark:border-gray-700 pb-4">
-          <img src="https://placehold.co/40x40/2563eb/ffffff?text=T" alt="TheBoiisMC Logo" class="rounded-full">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHByeD0iMjAiIHByeT0iMjAiIGZpbGw9IiMyNTYzZWIiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgYWxpZ25tZW50LWJhc2VsaW5lPSJjZW50cmFsIiBmaWxsPSIjZmZmZmZmIj5UPC90ZXh0Pjwvc3ZnPg==" alt="TheBoiisMC Logo" class="rounded-full">
           <h1 class="text-xl font-extrabold text-gray-900 dark:text-white">TheBoiisMC</h1>
         </div>
         <nav>
@@ -132,8 +132,9 @@
                     </div>
                 </div>
             </div>
-            <a href="personal-info.html" title="View Profile">
-                <img src="https://placehold.co/40x40/7e22ce/ffffff?text=J" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-blue-500 hover:ring-2 hover:ring-primary-blue-500 transition">
+            <a href="personal-info.html" title="View Profile" 
+               class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                <span class="material-symbols-sharp text-2xl">account_circle</span>
             </a>
           </div>
         </header>
@@ -149,7 +150,7 @@
             <section id="home" class="mb-12">
               <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                  <img src="https://placehold.co/80x80/7e22ce/ffffff?text=J" alt="User Avatar" class="w-20 h-20 rounded-full border-4 border-primary-blue-500">
+                  <span class="material-symbols-sharp text-7xl text-primary-blue-600 dark:text-primary-blue-400 w-20 h-20 flex items-center justify-center rounded-full border-4 border-primary-blue-500">person_circle</span>
                   <div>
                     <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Welcome, John Doe</h1>
                     <p class="text-gray-600 dark:text-gray-400 mt-1">Manage your info, privacy, and development settings to make **TheBoiisMC** work better for you.</p>
