@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Account Dashboard - TheBoiisMC</title>
+  <title>My Account - TheBoiisMC</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome CDN for Icons -->
@@ -14,35 +14,36 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <div class="w-72 bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 space-y-6">
-      <div class="flex items-center space-x-4 mb-10">
+    <div class="w-72 bg-white shadow-lg p-6 space-y-6">
+      <div class="flex items-center space-x-4 mb-8">
+        <!-- Logo -->
         <img src="https://via.placeholder.com/40?text=T" alt="TheBoiisMC Logo" class="rounded-full">
-        <h1 class="text-3xl font-semibold">TheBoiisMC</h1>
+        <h1 class="text-2xl font-semibold text-gray-900">TheBoiisMC</h1>
       </div>
       <ul class="space-y-4">
-        <li><a href="#profile" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <i class="fas fa-user-circle w-5 h-5"></i>
-            <span>Profile</span>
+        <li><a href="#profile" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+            <i class="fas fa-user-circle text-lg text-gray-600"></i>
+            <span class="text-gray-700">Profile</span>
           </a>
         </li>
-        <li><a href="#settings" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <i class="fas fa-cogs w-5 h-5"></i>
-            <span>Settings</span>
+        <li><a href="#settings" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+            <i class="fas fa-cogs text-lg text-gray-600"></i>
+            <span class="text-gray-700">Settings</span>
           </a>
         </li>
-        <li><a href="#privacy" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <i class="fas fa-shield-alt w-5 h-5"></i>
-            <span>Privacy</span>
+        <li><a href="#security" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+            <i class="fas fa-shield-alt text-lg text-gray-600"></i>
+            <span class="text-gray-700">Security</span>
           </a>
         </li>
-        <li><a href="#notifications" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <i class="fas fa-bell w-5 h-5"></i>
-            <span>Notifications</span>
+        <li><a href="#notifications" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+            <i class="fas fa-bell text-lg text-gray-600"></i>
+            <span class="text-gray-700">Notifications</span>
           </a>
         </li>
-        <li><a href="#logout" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <i class="fas fa-sign-out-alt w-5 h-5"></i>
-            <span>Log Out</span>
+        <li><a href="#logout" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+            <i class="fas fa-sign-out-alt text-lg text-gray-600"></i>
+            <span class="text-gray-700">Log Out</span>
           </a>
         </li>
       </ul>
@@ -52,9 +53,14 @@
     <div class="flex-1 p-8">
 
       <!-- Hero Section -->
-      <section class="bg-blue-600 text-white text-center py-16 rounded-lg shadow-lg mb-12">
-        <h2 class="text-4xl font-semibold">Welcome Back to TheBoiisMC</h2>
-        <p class="mt-4 text-lg">Your profile and settings are all here. Keep your account information up-to-date to ensure a smooth experience.</p>
+      <section class="bg-gray-50 p-8 rounded-lg shadow-lg mb-12">
+        <div class="flex items-center space-x-6 mb-8">
+          <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-20 h-20 rounded-full">
+          <div>
+            <h1 class="text-3xl font-semibold text-gray-800">Welcome, John Doe</h1>
+            <p class="text-gray-600">Manage your account and settings here</p>
+          </div>
+        </div>
       </section>
 
       <!-- Profile Section -->
@@ -79,14 +85,14 @@
 
           <!-- General Settings -->
           <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
-            <h2 class="text-2xl font-semibold">General Settings</h2>
+            <h2 class="text-2xl font-semibold text-gray-800">General Settings</h2>
             <div class="space-y-4">
               <div>
-                <label for="name" class="text-lg font-medium">Full Name</label>
+                <label for="name" class="text-lg font-medium text-gray-800">Full Name</label>
                 <input type="text" id="name" value="John Doe" class="w-full p-3 border border-gray-300 rounded-md mt-2">
               </div>
               <div>
-                <label for="email" class="text-lg font-medium">Email</label>
+                <label for="email" class="text-lg font-medium text-gray-800">Email</label>
                 <input type="email" id="email" value="johndoe@example.com" class="w-full p-3 border border-gray-300 rounded-md mt-2">
               </div>
             </div>
@@ -95,14 +101,14 @@
 
           <!-- Security Settings -->
           <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
-            <h2 class="text-2xl font-semibold">Security</h2>
+            <h2 class="text-2xl font-semibold text-gray-800">Security</h2>
             <div class="space-y-4">
               <div>
-                <label for="password" class="text-lg font-medium">Change Password</label>
+                <label for="password" class="text-lg font-medium text-gray-800">Change Password</label>
                 <input type="password" id="password" placeholder="********" class="w-full p-3 border border-gray-300 rounded-md mt-2">
               </div>
               <div>
-                <label for="2fa" class="text-lg font-medium">Two-Factor Authentication</label>
+                <label for="2fa" class="text-lg font-medium text-gray-800">Two-Factor Authentication</label>
                 <select id="2fa" class="w-full p-3 border border-gray-300 rounded-md mt-2">
                   <option>Enabled</option>
                   <option>Disabled</option>
@@ -115,33 +121,7 @@
         </div>
       </section>
 
-      <!-- Privacy Section -->
-      <section id="privacy" class="mb-12">
-        <h1 class="text-3xl font-semibold mb-6">Privacy Settings</h1>
-        <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
-          <h2 class="text-2xl font-semibold">Manage Privacy</h2>
-          <div class="space-y-4">
-            <div>
-              <label for="profile-visibility" class="text-lg font-medium">Profile Visibility</label>
-              <select id="profile-visibility" class="w-full p-3 border border-gray-300 rounded-md mt-2">
-                <option>Public</option>
-                <option>Friends Only</option>
-                <option>Private</option>
-              </select>
-            </div>
-            <div>
-              <label for="data-sharing" class="text-lg font-medium">Data Sharing</label>
-              <select id="data-sharing" class="w-full p-3 border border-gray-300 rounded-md mt-2">
-                <option>Allow</option>
-                <option>Do Not Allow</option>
-              </select>
-            </div>
-          </div>
-          <button class="mt-4 bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700 transition duration-200">Save Privacy Settings</button>
-        </div>
-      </section>
-
-      <!-- Footer with Trust Indicators -->
+      <!-- Footer -->
       <footer class="mt-16 text-center text-gray-600">
         <p class="text-sm">Your data is secured and protected. For more information, check our <a href="/privacy-policy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
         <p class="text-sm mt-4">Powered by TheBoiisMC &bull; All rights reserved.</p>
