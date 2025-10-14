@@ -33,6 +33,11 @@
               '400': '#60a5fa', '500': '#3b82f6', '600': '#2563eb', '700': '#1d4ed8', 
               '800': '#1e40af', '900': '#1e3a8a', '950': '#172554',
             },
+            // NEW: Added a vibrant secondary accent color
+            'accent-yellow': { 
+              '300': '#fcd34d', 
+              '500': '#f59e0b', 
+            }
           }
         }
       }
@@ -42,8 +47,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://accounts.theboiismc.com;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
+    .font-poppins { font-family: 'Poppins', sans-serif; } /* NEW */
     .material-symbols-sharp { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     .active-link {
       background-color: #eff6ff; color: #2563eb; font-weight: 600;
@@ -53,7 +61,7 @@
   </style>
 </head>
 
-<body class="bg-slate-50 font-sans text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+<body class="bg-slate-50 font-poppins text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
   <div class="flex min-h-screen">
     
     <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-xl p-4 flex-col justify-between 
@@ -65,23 +73,23 @@
         </div>
         <nav>
           <ul class="space-y-1" id="sidebar-nav">
-            <li><a href="index.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">home</span><span class="text-gray-700 dark:text-gray-200">Home</span></a></li>
-            <li><a href="personal-info.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150 active-link"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">person</span><span class="text-gray-700 dark:text-gray-200">Personal Info</span></a></li>
-            <li><a href="security.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">shield</span><span class="text-gray-700 dark:text-gray-200">Security</span></a></li>
-            <li><a href="data-privacy.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">privacy_tip</span><span class="text-gray-700 dark:text-gray-200">Data & Privacy</span></a></li>
-            <li><a href="dev-tools.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">code</span><span class="text-gray-700 dark:text-gray-200">Developer Tools</span></a></li>
+            <li><a href="index.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">home</span><span class="text-gray-700 dark:text-gray-200">Home</span></a></li>
+            <li><a href="personal-info.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150 active-link"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">person</span><span class="text-gray-700 dark:text-gray-200">Personal Info</span></a></li>
+            <li><a href="security.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">shield</span><span class="text-gray-700 dark:text-gray-200">Security</span></a></li>
+            <li><a href="data-privacy.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">privacy_tip</span><span class="text-gray-700 dark:text-gray-200">Data & Privacy</span></a></li>
+            <li><a href="dev-tools.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">code</span><span class="text-gray-700 dark:text-gray-200">Developer Tools</span></a></li>
           </ul>
         </nav>
       </div>
       <div>
         <ul class="space-y-1">
             <li>
-                <button id="theme-toggle" class="w-full flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150">
+                <button id="theme-toggle" class="w-full flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150">
                     <span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400" id="theme-icon">dark_mode</span>
                     <span class="text-gray-700 dark:text-gray-200" id="theme-text">Dark Mode</span>
                 </button>
             </li>
-            <li><a href="#logout" class="flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">logout</span><span class="text-gray-700 dark:text-gray-200">Log Out</span></a></li>
+            <li><a href="#logout" class="flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-3xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">logout</span><span class="text-gray-700 dark:text-gray-200">Log Out</span></a></li>
         </ul>
       </div>
     </aside>
@@ -89,7 +97,7 @@
     <main class="flex-1 lg:ml-64">
       <div class="p-4 sm:p-6 md:p-8">
         
-        <header class="flex justify-between items-center mb-10 bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg dark:shadow-2xl transition-colors duration-300">
+        <header class="flex justify-between items-center mb-10 bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-3xl shadow-lg dark:shadow-2xl transition-colors duration-300">
           <div class="flex items-center w-full max-w-lg">
             <button id="menu-toggle" class="lg:hidden text-gray-600 dark:text-gray-300 mr-4">
               <span class="material-symbols-sharp text-3xl">menu</span>
@@ -104,7 +112,7 @@
                 <button id="apps-menu-button" class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                     <span class="material-symbols-sharp text-2xl">apps</span>
                 </button>
-                <div id="apps-menu" class="absolute hidden right-0 mt-2 bg-white dark:bg-gray-700 shadow-xl rounded-2xl w-80 border border-gray-200 dark:border-gray-600 z-30 p-4 transition-colors duration-300">
+                <div id="apps-menu" class="absolute hidden right-0 mt-2 bg-white dark:bg-gray-700 shadow-xl rounded-3xl w-80 border border-gray-200 dark:border-gray-600 z-30 p-4 transition-colors duration-300">
                     <div class="grid grid-cols-2 gap-2">
                         <a href="https://maps.theboiismc.com" class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-gray-600 text-center transition">
                             <span class="material-symbols-sharp text-3xl text-primary-blue-500">map</span>
@@ -143,16 +151,16 @@
                         </a>
                     </li>
                     <li class="material-symbols-sharp text-lg mx-1">chevron_right</li>
-                    <li><span class="text-gray-800 dark:text-white font-medium">Personal Info</span></li>
+                    <li><span class="text-gray-800 dark:text-white font-semibold">Personal Info</span></li>
                 </ol>
             </nav>
 
-            <a href="index.html" class="flex items-center text-primary-blue-600 dark:text-primary-blue-400 mb-8 hover:underline">
+            <a href="index.html" class="flex items-center text-primary-blue-600 dark:text-primary-blue-400 mb-8 hover:underline font-semibold">
                 <span class="material-symbols-sharp text-xl mr-2">arrow_back</span>
                 <span class="font-medium">Back to Home</span>
             </a>
 
-            <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+            <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">Personal Information</h1>
                 
                 <div class="space-y-6">
@@ -160,21 +168,21 @@
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Name</p>
                         <div class="flex justify-between items-center mt-1">
                             <p class="text-lg font-semibold">John Doe</p>
-                            <button class="text-primary-blue-600 dark:text-primary-blue-400 hover:text-primary-blue-700 text-sm">Edit</button>
+                            <button class="text-accent-yellow-500 dark:text-accent-yellow-300 hover:text-accent-yellow-600 dark:hover:text-accent-yellow-400 text-sm font-medium">Edit</button>
                         </div>
                     </div>
                     <div class="border-b border-gray-100 dark:border-gray-700 pb-4">
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
                         <div class="flex justify-between items-center mt-1">
                             <p class="text-lg font-semibold">johndoe@theboiismc.com</p>
-                            <button class="text-primary-blue-600 dark:text-primary-blue-400 hover:text-primary-blue-700 text-sm">Edit</button>
+                            <button class="text-accent-yellow-500 dark:text-accent-yellow-300 hover:text-accent-yellow-600 dark:hover:text-accent-yellow-400 text-sm font-medium">Edit</button>
                         </div>
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</p>
                         <div class="flex justify-between items-center mt-1">
                             <p class="text-lg font-semibold">Not Set</p>
-                            <button class="text-primary-blue-600 dark:text-primary-blue-400 hover:text-primary-blue-700 text-sm">Add Phone</button>
+                            <button class="text-primary-blue-600 dark:text-primary-blue-400 hover:text-primary-blue-700 text-sm font-medium">Add Phone</button>
                         </div>
                     </div>
                 </div>
