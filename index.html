@@ -65,6 +65,18 @@
       color: #2563eb;
       @apply dark:text-primary-blue-300;
     }
+    /* Style for the dynamic avatar (initials) */
+    .dynamic-profile-icon {
+      background-color: #2563eb; /* primary-blue-600 */
+      color: #ffffff;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.25rem; /* text-xl */
+      /* Add these to center initials */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -110,7 +122,7 @@
               <span class="material-symbols-sharp text-3xl">menu</span>
             </button>
             <div class="relative w-full">
-              <input type="text" class="w-full bg-slate-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 pl-12 border border-gray-200 dark:border-gray-700 rounded-full focus:ring-2 focus:ring-primary-blue-600 focus:border-primary-blue-600 transition" placeholder="Search account settings and profile..." id="search-input">
+              <input type="text" class="w-full bg-slate-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 pl-12 border border-gray-200 dark:border-gray-700 rounded-full focus:ring-2 focus:ring-primary-blue-600 focus:border-primary-blue-600 transition" placeholder="Search account settings and profile... (Try: settings:password)" id="search-input">
               <span class="material-symbols-sharp absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
                <div id="search-results" class="absolute hidden top-full mt-2 w-full bg-white dark:bg-gray-700 shadow-xl rounded-3xl border border-gray-200 dark:border-gray-600 z-30 p-2 transition-colors duration-300 max-h-60 overflow-y-auto">
                     </div>
@@ -144,15 +156,18 @@
             </div>
             <div class="relative">
                 <button id="profile-menu-button" title="View Profile Options" 
-                    class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                    <span class="material-symbols-sharp text-2xl">account_circle</span>
+                    class="flex items-center justify-center w-10 h-10 rounded-full transition 
+                           border-2 border-primary-blue-500 hover:opacity-80">
+                    <div id="header-profile-icon" class="dynamic-profile-icon w-full h-full flex items-center justify-center rounded-full text-base">
+                        </div>
                 </button>
                  <div id="profile-menu" class="absolute hidden right-0 mt-2 w-72 bg-white dark:bg-gray-700 shadow-xl rounded-3xl border border-gray-200 dark:border-gray-600 z-30 p-4 transition-colors duration-300">
                     
                     <div class="text-center pb-3 border-b border-gray-100 dark:border-gray-600 mb-3">
-                        <span class="material-symbols-sharp text-6xl text-primary-blue-600 dark:text-primary-blue-400 mx-auto">person_circle</span>
-                        <p class="text-lg font-semibold text-gray-900 dark:text-white mt-1">John Doe</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">johndoe@theboiismc.com</p>
+                        <div class="dynamic-profile-icon w-16 h-16 rounded-full mx-auto flex items-center justify-center text-2xl">
+                             </div>
+                        <p class="text-lg font-semibold text-gray-900 dark:text-white mt-2 dynamic-user-name">Loading Name...</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 dynamic-user-email">Loading Email...</p>
                     </div>
 
                     <a href="personal-info.html" class="flex items-center space-x-3 p-3 text-gray-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-gray-600 rounded-xl transition">
@@ -186,9 +201,10 @@
             <section id="home" class="mb-12">
               <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                  <span class="material-symbols-sharp text-7xl text-primary-blue-600 dark:text-primary-blue-400 w-20 h-20 flex items-center justify-center rounded-full border-4 border-primary-blue-500">person_circle</span>
+                  <div class="dynamic-profile-icon w-20 h-20 flex items-center justify-center rounded-full border-4 border-primary-blue-500 text-3xl">
+                      </div>
                   <div>
-                    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Welcome, John Doe</h1>
+                    <h1 id="welcome-header" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Welcome...</h1>
                     <p class="text-gray-600 dark:text-gray-400 mt-1">Manage your information, privacy settings, and developer tools easily.</p>
                   </div>
                 </div>
