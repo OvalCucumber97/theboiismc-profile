@@ -6,37 +6,39 @@
   <title>My Account Dashboard</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
 
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <div class="w-72 bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6">
+    <div class="w-72 bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 space-y-6">
       <h1 class="text-3xl font-semibold mb-10">My Account</h1>
-      <ul class="space-y-6">
+      <ul class="space-y-4">
         <li><a href="#profile" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 0a10 10 0 100 20A10 10 0 0010 0zm0 18a8 8 0 110-16 8 8 0 010 16z"></path></svg>
+            <i class="fas fa-user-circle w-5 h-5"></i>
             <span>Profile</span>
           </a>
         </li>
         <li><a href="#settings" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M6 2L5 3l3 3h4L16 3l-1-1H6z"></path></svg>
+            <i class="fas fa-cogs w-5 h-5"></i>
             <span>Settings</span>
           </a>
         </li>
         <li><a href="#privacy" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 2a8 8 0 11-8 8 8 8 0 018-8zm0 14a6 6 0 100-12 6 6 0 000 12z"></path></svg>
+            <i class="fas fa-shield-alt w-5 h-5"></i>
             <span>Privacy</span>
           </a>
         </li>
         <li><a href="#notifications" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 2a8 8 0 11-8 8 8 8 0 018-8zm0 14a6 6 0 100-12 6 6 0 000 12z"></path></svg>
+            <i class="fas fa-bell w-5 h-5"></i>
             <span>Notifications</span>
           </a>
         </li>
         <li><a href="#logout" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
-            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 7l3 3-3 3M3 12h12"></path></svg>
+            <i class="fas fa-sign-out-alt w-5 h-5"></i>
             <span>Log Out</span>
           </a>
         </li>
@@ -49,10 +51,10 @@
       <!-- Profile Section -->
       <section id="profile" class="mb-12">
         <h1 class="text-3xl font-semibold mb-6">Your Profile</h1>
-        <div class="bg-white shadow-lg rounded-lg p-8">
-          <div class="flex items-center space-x-6 mb-6">
+        <div class="bg-white shadow-lg rounded-lg p-8 space-y-6">
+          <div class="flex items-center space-x-6">
             <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full">
-            <div>
+            <div class="space-y-2">
               <p class="text-xl font-medium">John Doe</p>
               <p class="text-gray-600">johndoe@example.com</p>
               <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200">Edit Profile</button>
@@ -64,11 +66,11 @@
       <!-- Settings Section -->
       <section id="settings" class="mb-12">
         <h1 class="text-3xl font-semibold mb-6">Account Settings</h1>
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-8">
 
           <!-- General Settings -->
-          <div class="bg-white shadow-lg rounded-lg p-6">
-            <h2 class="text-2xl font-semibold mb-4">General Settings</h2>
+          <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
+            <h2 class="text-2xl font-semibold">General Settings</h2>
             <div class="space-y-4">
               <div>
                 <label for="name" class="text-lg font-medium">Full Name</label>
@@ -83,8 +85,8 @@
           </div>
 
           <!-- Security Settings -->
-          <div class="bg-white shadow-lg rounded-lg p-6">
-            <h2 class="text-2xl font-semibold mb-4">Security</h2>
+          <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
+            <h2 class="text-2xl font-semibold">Security</h2>
             <div class="space-y-4">
               <div>
                 <label for="password" class="text-lg font-medium">Change Password</label>
@@ -107,8 +109,8 @@
       <!-- Privacy Section -->
       <section id="privacy" class="mb-12">
         <h1 class="text-3xl font-semibold mb-6">Privacy Settings</h1>
-        <div class="bg-white shadow-lg rounded-lg p-6">
-          <h2 class="text-2xl font-semibold mb-4">Manage Privacy</h2>
+        <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
+          <h2 class="text-2xl font-semibold">Manage Privacy</h2>
           <div class="space-y-4">
             <div>
               <label for="profile-visibility" class="text-lg font-medium">Profile Visibility</label>
