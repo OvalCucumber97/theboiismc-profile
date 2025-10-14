@@ -24,26 +24,38 @@
 
       <!-- Sidebar Links -->
       <ul class="space-y-4">
-        <li><a href="#profile" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+
+        <!-- Profile Section -->
+        <li class="relative group">
+          <a href="#profile" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
             <i class="fas fa-user-circle text-lg text-gray-600"></i>
             <span class="text-gray-700">Profile</span>
           </a>
         </li>
-        <li><a href="#settings" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+
+        <!-- Settings Section with Dropdown -->
+        <li class="relative group">
+          <a href="#" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
             <i class="fas fa-cogs text-lg text-gray-600"></i>
             <span class="text-gray-700">Settings</span>
+            <i class="fas fa-chevron-down ml-auto text-gray-500 group-hover:text-gray-700"></i>
           </a>
+          <ul class="absolute left-0 w-full bg-white shadow-md rounded-md mt-2 space-y-2 py-2 hidden group-hover:block">
+            <li><a href="#general" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">General</a></li>
+            <li><a href="#privacy" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Privacy</a></li>
+            <li><a href="#notifications" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Notifications</a></li>
+          </ul>
         </li>
-        <li><a href="#security" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
+
+        <!-- Security Section -->
+        <li class="relative group">
+          <a href="#security" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
             <i class="fas fa-shield-alt text-lg text-gray-600"></i>
             <span class="text-gray-700">Security</span>
           </a>
         </li>
-        <li><a href="#notifications" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
-            <i class="fas fa-bell text-lg text-gray-600"></i>
-            <span class="text-gray-700">Notifications</span>
-          </a>
-        </li>
+
+        <!-- Logout -->
         <li><a href="#logout" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
             <i class="fas fa-sign-out-alt text-lg text-gray-600"></i>
             <span class="text-gray-700">Log Out</span>
@@ -133,7 +145,24 @@
     </div>
   </div>
 
-  <!-- JavaScript for handling form submission and interactions -->
-  <script src="script.js"></script>
+  <!-- JavaScript for Dropdown Behavior -->
+  <script>
+    // Optional: Use JavaScript to toggle the visibility of dropdown menus on click or hover
+    const dropdown = document.querySelectorAll('.group');
+
+    dropdown.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const subMenu = item.querySelector('ul');
+        subMenu.classList.remove('hidden');
+        subMenu.classList.add('block');
+      });
+
+      item.addEventListener('mouseout', () => {
+        const subMenu = item.querySelector('ul');
+        subMenu.classList.remove('block');
+        subMenu.classList.add('hidden');
+      });
+    });
+  </script>
 </body>
 </html>
