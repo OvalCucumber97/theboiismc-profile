@@ -1,23 +1,28 @@
-// IMPORTANT: oidc-client-ts is loaded globally via CDN in index.html
-// We access the UserManager constructor from the global scope (window.UserManager)
-
 // --- OIDC Configuration ---
 const OIDC_CONFIG = {
-    // !!! IMPORTANT: REPLACE THESE PLACEHOLDERS WITH YOUR ACTUAL IDENTITY PROVIDER DETAILS !!!
-    authority: "https://accounts.theboiismc.com/application/o/accountdashboard/.well-known/openid-configuration", // e.g., 'https://your-auth-server.com'
-    client_id: "yopePhMvPt1dj65UFbmVkxHIuX7MDeeNBoobKSQy", // The client ID registered for this application
-    redirect_uri: "https://myaccount.theboiismc.com" // This page (index.html) handles both the dashboard and the callback
-    response_type: "code", // Using Authorization Code Flow with PKCE
-    scope: "openid profile email", // Standard scopes for basic user inf
+    // Correct Authority/Issuer URL: oidc-client-ts will append /.well-known/openid-configuration
+    authority: "https://accounts.theboiismc.com/application/o/accountdashboard/",
+    // The client ID registered for this application
+    client_id: "yopePhMvPt1dj65UFbmVkxHIuX7MDeeNBoobKSQy", 
+    // The full, correct URL where the user will be redirected after login
+    redirect_uri: "https://myaccount.theboiismc.com/", 
+    // The URL for the user to be redirected after logout (usually the same as redirect_uri for SPAs)
+    post_logout_redirect_uri: "https://myaccount.theboiismc.com/",
+    
+    response_type: "code", // Authorization Code Flow with PKCE (Recommended for SPAs)
+    scope: "openid profile email", // Standard scopes for basic user info
     userStore: window.localStorage, // Persist session across browser restarts
+    
+    // Custom parameter to direct the user to the specific authentik login flow
     extraQueryParams: {
-        // Example: if your IDP needs extra params
-        // kc_idp_hint: 'google'
+        // CORRECTED HINT: This tells authentik to use the specified flow.
+        login_hint: 'default-authentication-flow' 
     },
     // PKCE is enabled by default for 'code' response_type
 };
 
 // Initialize the UserManager
+// Assuming oidc-client-ts is loaded globally and available as window.UserManager
 const userManager = new UserManager(OIDC_CONFIG);
 
 // --- UI Element Selectors ---
@@ -63,15 +68,15 @@ function updateUI(user) {
         console.error("User object or profile is missing. Cannot update UI.");
         return;
     }
-
-    const { name, email } = user.profile;
-    const displayName = name || email.split('@')[0];
+    // OIDC standard claims: name and email
+    const { name, email } = user.profile; 
+    const displayName = name || (email ? email.split('@')[0] : 'User');
     const initials = getInitials(displayName);
 
     // Update Text Fields
     if (ui.welcomeName) ui.welcomeName.textContent = displayName;
     if (ui.dropdownName) ui.dropdownName.textContent = displayName;
-    if (ui.dropdownEmail) ui.dropdownEmail.textContent = email;
+    if (ui.dropdownEmail && email) ui.dropdownEmail.textContent = email;
 
     // Update Profile Icons
     [ui.headerIcon, ui.dropdownIcon, ui.welcomeIcon].forEach(el => {
@@ -95,14 +100,17 @@ async function handleAuthFlow() {
         try {
             // Process the tokens and store the session
             const user = await userManager.signinCallback(window.location.href);
-
+            
             // Once successful, clean the URL and load the dashboard
             window.history.replaceState({}, document.title, window.location.origin + window.location.pathname);
             updateUI(user);
         } catch (error) {
             console.error("OIDC Callback Error:", error);
-            // On callback error (e.g., state mismatch, token expired), force redirect to login
-            userManager.signinRedirect();
+            // On callback error, force redirect to login
+            // Use the extraQueryParams for the required login flow hint
+            userManager.signinRedirect({ 
+                extraQueryParams: OIDC_CONFIG.extraQueryParams 
+            }); 
         }
         return;
     }
@@ -110,19 +118,23 @@ async function handleAuthFlow() {
     // 2. Check for Existing User Session
     try {
         const user = await userManager.getUser();
-
         if (user && !user.expired) {
             // User is authenticated and session is valid
             updateUI(user);
         } else {
             // No valid session, redirect to Identity Provider for login
             console.log("No valid session found. Redirecting to login.");
-            userManager.signinRedirect();
+            // Use the extraQueryParams for the required login flow hint
+            userManager.signinRedirect({ 
+                extraQueryParams: OIDC_CONFIG.extraQueryParams 
+            });
         }
     } catch (error) {
         console.error("Error during authentication check:", error);
         // Fallback: If any error occurs, assume not logged in and redirect
-        userManager.signinRedirect();
+        userManager.signinRedirect({ 
+            extraQueryParams: OIDC_CONFIG.extraQueryParams 
+        });
     }
 }
 
@@ -140,7 +152,6 @@ function handleLogout() {
 function handleThemeToggle() {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
     if (ui.themeIcon && ui.themeText) {
         if (isDark) {
             ui.themeIcon.textContent = 'light_mode';
@@ -153,7 +164,6 @@ function handleThemeToggle() {
 }
 
 // --- Event Listeners and Initialization ---
-
 window.onload = () => {
     // Initialize theme state on load
     const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -162,10 +172,10 @@ window.onload = () => {
         if (ui.themeIcon) ui.themeIcon.textContent = 'light_mode';
         if (ui.themeText) ui.themeText.textContent = 'Light Mode';
     } else {
+        document.documentElement.classList.remove('dark'); // Ensure 'dark' is removed on light theme
         if (ui.themeIcon) ui.themeIcon.textContent = 'dark_mode';
         if (ui.themeText) ui.themeText.textContent = 'Dark Mode';
     }
-
 
     // Add event listener for theme toggle
     if (ui.themeToggle) {
@@ -179,20 +189,19 @@ window.onload = () => {
         }
     });
     
-    // Header/Dropdown menu toggles (re-adding from original script, simplified)
+    // Header/Dropdown menu toggles 
     const appsMenuButton = document.getElementById('apps-menu-button');
     const appsMenu = document.getElementById('apps-menu');
     const profileMenuButton = document.getElementById('profile-menu-button');
     const profileMenu = document.getElementById('profile-menu');
     
-    function toggleMenu(button, menu) {
+    function toggleMenu(menu) {
         if (menu) menu.classList.toggle('hidden');
     }
-
-    if (appsMenuButton) appsMenuButton.addEventListener('click', () => toggleMenu(appsMenuButton, appsMenu));
-    if (profileMenuButton) profileMenuButton.addEventListener('click', () => toggleMenu(profileMenuButton, profileMenu));
-
-
+    
+    if (appsMenuButton) appsMenuButton.addEventListener('click', () => toggleMenu(appsMenu));
+    if (profileMenuButton) profileMenuButton.addEventListener('click', () => toggleMenu(profileMenu));
+    
     // Start the Authentication Flow
     handleAuthFlow();
 };
