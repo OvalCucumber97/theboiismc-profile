@@ -1,178 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account - TheBoiisMC</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome CDN for Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Custom style for the active sidebar link */
+    .active-link {
+      background-color: #e0f2fe; /* light-blue-100 */
+      color: #0284c7; /* sky-600 */
+      font-weight: 600;
+    }
+    .active-link i {
+      color: #0284c7; /* sky-600 */
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-slate-50 font-sans">
 
-  <!-- Main Layout -->
   <div class="flex min-h-screen">
+    <aside id="sidebar" class="w-64 bg-white shadow-md p-4 flex-col justify-between hidden lg:flex fixed h-full z-20">
+      <div>
+        <div class="flex items-center space-x-3 mb-10 p-2">
+          <img src="https://placehold.co/40x40/0ea5e9/ffffff?text=T" alt="TheBoiisMC Logo" class="rounded-full">
+          <h1 class="text-xl font-bold text-gray-800">TheBoiisMC</h1>
+        </div>
 
-    <!-- Sidebar -->
-    <div class="w-20 lg:w-72 bg-white shadow-lg p-6 space-y-6 hidden lg:block">
-      <!-- Logo and Brand Name -->
-      <div class="flex items-center space-x-4 mb-8">
-        <img src="https://via.placeholder.com/40?text=T" alt="TheBoiisMC Logo" class="rounded-full">
-        <h1 class="text-2xl font-semibold text-gray-900">TheBoiisMC</h1>
+        <nav>
+          <ul class="space-y-2" id="sidebar-nav">
+            <li><a href="#home" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 px-4 py-3 rounded-lg transition ease-in-out duration-150 active-link"><i class="fas fa-home w-6 text-center text-lg text-gray-500"></i><span class="text-gray-700">Home</span></a></li>
+            <li><a href="#profile" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 px-4 py-3 rounded-lg transition ease-in-out duration-150"><i class="fas fa-user-circle w-6 text-center text-lg text-gray-500"></i><span class="text-gray-700">Personal Info</span></a></li>
+            <li><a href="#security" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 px-4 py-3 rounded-lg transition ease-in-out duration-150"><i class="fas fa-shield-halved w-6 text-center text-lg text-gray-500"></i><span class="text-gray-700">Security</span></a></li>
+            <li><a href="#data" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 px-4 py-3 rounded-lg transition ease-in-out duration-150"><i class="fas fa-database w-6 text-center text-lg text-gray-500"></i><span class="text-gray-700">Data & Privacy</span></a></li>
+          </ul>
+        </nav>
       </div>
+      <div>
+        <ul>
+            <li><a href="#logout" class="flex items-center space-x-4 hover:bg-slate-100 px-4 py-3 rounded-lg transition ease-in-out duration-150"><i class="fas fa-sign-out-alt w-6 text-center text-lg text-gray-500"></i><span class="text-gray-700">Log Out</span></a></li>
+        </ul>
+      </div>
+    </aside>
 
-      <!-- Sidebar Links -->
-      <ul class="space-y-4">
-        <li><a href="#profile" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out"><i class="fas fa-user-circle text-lg text-gray-600"></i><span class="text-gray-700">Profile</span></a></li>
-        <li><a href="#settings" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out"><i class="fas fa-cogs text-lg text-gray-600"></i><span class="text-gray-700">Settings</span></a></li>
-        <li><a href="#security" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out"><i class="fas fa-shield-alt text-lg text-gray-600"></i><span class="text-gray-700">Security</span></a></li>
-        <li><a href="#logout" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out"><i class="fas fa-sign-out-alt text-lg text-gray-600"></i><span class="text-gray-700">Log Out</span></a></li>
-      </ul>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="flex-1 bg-gray-50 p-8">
-
-      <!-- Header -->
-      <header class="flex justify-between items-center mb-12">
-        <!-- Search Bar -->
-        <div class="relative w-1/3 lg:w-1/4">
-          <input type="text" class="w-full p-3 pl-10 border border-gray-300 rounded-md" placeholder="Search..." id="search-input">
-          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
-        </div>
-
-        <!-- Right Icons (Profile, Apps, Logout) -->
-        <div class="flex items-center space-x-6">
-
-          <!-- Apps Icon (Dropdown) -->
-          <div class="relative">
-            <button class="text-gray-600 hover:text-gray-800">
-              <i class="fas fa-th-large text-2xl"></i>
+    <main class="flex-1 lg:ml-64">
+      <div class="p-6 md:p-8">
+        <header class="flex justify-between items-center mb-10">
+          <div class="flex items-center w-full max-w-lg">
+            <button id="menu-toggle" class="lg:hidden text-gray-600 mr-4">
+              <i class="fas fa-bars text-2xl"></i>
             </button>
-            <div class="absolute hidden right-0 mt-2 bg-white shadow-lg rounded-lg w-48 z-10">
-              <ul class="py-2">
-                <li><a href="#maps" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Maps</a></li>
-                <li><a href="#services" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Services</a></li>
-                <li><a href="#docs" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Docs</a></li>
-              </ul>
+            <div class="relative w-full">
+              <input type="text" class="w-full bg-white p-3 pl-12 border border-gray-200 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="Search account..." id="search-input">
+              <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
           </div>
-
-          <!-- Profile Icon (Dropdown) -->
-          <div class="relative">
-            <button class="text-gray-600 hover:text-gray-800">
-              <i class="fas fa-user-circle text-2xl"></i>
+          <div class="flex items-center space-x-5">
+            <button class="text-gray-500 hover:text-gray-800">
+              <i class="fas fa-th-large text-xl"></i>
             </button>
-            <div class="absolute hidden right-0 mt-2 bg-white shadow-lg rounded-lg w-48 z-10">
-              <ul class="py-2">
-                <li><a href="#profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">My Profile</a></li>
-                <li><a href="#settings" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Settings</a></li>
-                <li><a href="#logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Log Out</a></li>
-              </ul>
-            </div>
+            <button>
+              <img src="https://placehold.co/40x40/7e22ce/ffffff?text=J" alt="User Avatar" class="w-10 h-10 rounded-full">
+            </button>
           </div>
+        </header>
 
-        </div>
-      </header>
-
-      <!-- Main Content Sections -->
-
-      <!-- Hero Section -->
-      <section class="bg-white p-8 rounded-lg shadow-lg mb-12">
-        <div class="flex items-center space-x-6 mb-8">
-          <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full mb-4 lg:mb-0">
-          <div>
-            <h1 class="text-3xl font-semibold text-gray-800">Welcome, John Doe</h1>
-            <p class="text-gray-600">Manage your account and settings here</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Profile Section -->
-      <section id="profile" class="mb-12">
-        <h1 class="text-3xl font-semibold mb-6">Your Profile</h1>
-        <div class="bg-white shadow-lg rounded-lg p-8 space-y-6">
-          <div class="flex items-center space-x-6">
-            <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full">
-            <div class="space-y-2">
-              <p class="text-xl font-medium">John Doe</p>
-              <p class="text-gray-600">johndoe@example.com</p>
-              <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200">Edit Profile</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Settings Section -->
-      <section id="settings" class="mb-12">
-        <h1 class="text-3xl font-semibold mb-6">Account Settings</h1>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-          <!-- General Settings -->
-          <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
-            <h2 class="text-2xl font-semibold text-gray-800">General Settings</h2>
-            <div class="space-y-4">
+        <section id="home" class="mb-12">
+          <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <img src="https://placehold.co/80x80/7e22ce/ffffff?text=J" alt="User Avatar" class="w-20 h-20 rounded-full">
               <div>
-                <label for="name" class="text-lg font-medium text-gray-800">Full Name</label>
-                <input type="text" id="name" value="John Doe" class="w-full p-3 border border-gray-300 rounded-md mt-2">
-              </div>
-              <div>
-                <label for="email" class="text-lg font-medium text-gray-800">Email</label>
-                <input type="email" id="email" value="johndoe@example.com" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Welcome, John Doe</h1>
+                <p class="text-gray-600 mt-1">Manage your info, privacy, and security to make TheBoiisMC work better for you.</p>
               </div>
             </div>
-            <button class="mt-4 bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 transition duration-200">Save Changes</button>
           </div>
+        </section>
 
-          <!-- Security Settings -->
-          <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
-            <h2 class="text-2xl font-semibold text-gray-800">Security</h2>
-            <div class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <section id="profile" class="p-6 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <a href="#profile-details" class="flex justify-between items-start">
               <div>
-                <label for="password" class="text-lg font-medium text-gray-800">Change Password</label>
-                <input type="password" id="password" placeholder="********" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+                <h2 class="text-xl font-semibold text-gray-900">Personal Info</h2>
+                <p class="text-gray-600 mt-2">Update your name, email, and other personal details.</p>
               </div>
-              <div>
-                <label for="2fa" class="text-lg font-medium text-gray-800">Two-Factor Authentication</label>
-                <select id="2fa" class="w-full p-3 border border-gray-300 rounded-md mt-2">
-                  <option>Enabled</option>
-                  <option>Disabled</option>
-                </select>
-              </div>
-            </div>
-            <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200">Update Security</button>
-          </div>
+              <i class="fas fa-chevron-right text-gray-400 mt-1"></i>
+            </a>
+          </section>
 
+          <section id="security" class="p-6 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+             <a href="#security-details" class="flex justify-between items-start">
+              <div>
+                <h2 class="text-xl font-semibold text-gray-900">Security</h2>
+                <p class="text-gray-600 mt-2">Change your password and manage two-factor authentication.</p>
+              </div>
+              <i class="fas fa-chevron-right text-gray-400 mt-1"></i>
+            </a>
+          </section>
+
+          <section id="data" class="p-6 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <a href="#data-details" class="flex justify-between items-start">
+              <div>
+                <h2 class="text-xl font-semibold text-gray-900">Data & Privacy</h2>
+                <p class="text-gray-600 mt-2">See the data in your account and choose what's saved.</p>
+              </div>
+              <i class="fas fa-chevron-right text-gray-400 mt-1"></i>
+            </a>
+          </section>
+
+          <section id="subscriptions" class="p-6 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <a href="#subscriptions-details" class="flex justify-between items-start">
+              <div>
+                <h2 class="text-xl font-semibold text-gray-900">Payments & Subscriptions</h2>
+                <p class="text-gray-600 mt-2">Manage payment methods and view your purchase history.</p>
+              </div>
+              <i class="fas fa-chevron-right text-gray-400 mt-1"></i>
+            </a>
+          </section>
+          
         </div>
-      </section>
 
-      <!-- Footer Section -->
-      <footer class="mt-16 text-center text-gray-600">
-        <p class="text-sm">Your data is secured and protected. For more information, check our <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
-        <p class="text-sm mt-4">Powered by TheBoiisMC &bull; All rights reserved.</p>
-      </footer>
-
-    </div>
+        <footer class="mt-16 text-center text-gray-500">
+          <p class="text-sm">Your data is secured and protected. For more information, read our <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+          <p class="text-xs mt-4">&copy; 2025 TheBoiisMC. All rights reserved.</p>
+        </footer>
+      </div>
+    </main>
   </div>
 
-  <!-- JavaScript for Dropdown Behavior -->
   <script>
-    // Toggle Dropdown for Apps and Profile
-    document.querySelectorAll('.relative').forEach(item => {
-      item.addEventListener('click', (e) => {
-        const dropdown = item.querySelector('div');
-        dropdown.classList.toggle('hidden');
-      });
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-    // Hide dropdown if click is outside
-    window.addEventListener('click', (e) => {
-      if (!e.target.closest('.relative')) {
-        document.querySelectorAll('.relative > div').forEach(dropdown => {
-          dropdown.classList.add('hidden');
+      // Mobile sidebar toggle
+      menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+        sidebar.classList.toggle('flex');
+      });
+
+      // Set active link based on click
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Remove active class from all links
+          sidebarLinks.forEach(l => l.classList.remove('active-link'));
+          
+          // Add active class to the clicked link
+          this.classList.add('active-link');
+
+          // On mobile, hide sidebar after clicking a link
+          if (window.innerWidth < 1024) {
+            sidebar.classList.add('hidden');
+            sidebar.classList.remove('flex');
+          }
         });
-      }
+      });
+
+      // Optional: Set active link on scroll
+      const sections = document.querySelectorAll('section');
+      window.addEventListener('scroll', () => {
+          let current = '';
+          sections.forEach(section => {
+              const sectionTop = section.offsetTop;
+              if (pageYOffset >= sectionTop - 60) {
+                  current = section.getAttribute('id');
+              }
+          });
+
+          sidebarLinks.forEach(link => {
+              link.classList.remove('active-link');
+              if (link.getAttribute('href') === `#${current}`) {
+                  link.classList.add('active-link');
+              }
+          });
+      });
     });
   </script>
 </body>
