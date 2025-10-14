@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account - TheBoiisMC</title>
   
+  <script>
+    (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        const effectiveTheme = storedTheme ? storedTheme : (systemPrefersDark ? 'dark' : 'light');
+
+        if (effectiveTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+             document.documentElement.classList.remove('dark');
+        }
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     // Custom Tailwind Configuration for Dark Mode & Theme
@@ -48,7 +63,8 @@
 <body class="bg-slate-50 font-sans text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
   <div class="flex min-h-screen">
     
-    <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-xl p-4 flex-col justify-between hidden lg:flex fixed h-full z-20 transition-colors duration-300">
+    <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-xl p-4 flex-col justify-between 
+                                **hidden lg:flex fixed h-full z-20** transition-colors duration-300">
       <div>
         <div class="flex items-center space-x-3 mb-10 p-2 border-b border-gray-100 dark:border-gray-700 pb-4">
           <img src="https://placehold.co/40x40/2563eb/ffffff?text=T" alt="TheBoiisMC Logo" class="rounded-full">
@@ -77,7 +93,7 @@
       </div>
     </aside>
 
-    <main class="flex-1 lg:ml-64">
+    <main class="flex-1 **lg:ml-64**">
       <div class="p-4 sm:p-6 md:p-8">
         
         <header class="flex justify-between items-center mb-10 bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg dark:shadow-2xl transition-colors duration-300">
@@ -199,78 +215,6 @@
     </main>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.getElementById('menu-toggle');
-      const sidebar = document.getElementById('sidebar');
-      const appsMenuButton = document.getElementById('apps-menu-button');
-      const appsMenu = document.getElementById('apps-menu');
-      const themeToggle = document.getElementById('theme-toggle');
-      const themeIcon = document.getElementById('theme-icon');
-      const themeText = document.getElementById('theme-text');
-
-      // --- Theme Logic ---
-      const htmlEl = document.documentElement;
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-      function updateTheme(theme) {
-          if (theme === 'dark') {
-              htmlEl.classList.add('dark');
-              themeIcon.textContent = 'light_mode';
-              themeText.textContent = 'Light Mode';
-          } else {
-              htmlEl.classList.remove('dark');
-              themeIcon.textContent = 'dark_mode';
-              themeText.textContent = 'Dark Mode';
-          }
-          localStorage.setItem('theme', theme);
-      }
-
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-          updateTheme(savedTheme);
-      } else if (prefersDark.matches) {
-          updateTheme('dark');
-      } else {
-          updateTheme('light');
-      }
-      
-      prefersDark.addEventListener('change', (e) => {
-          if (!localStorage.getItem('theme')) {
-              updateTheme(e.matches ? 'dark' : 'light');
-          }
-      });
-
-      themeToggle.addEventListener('click', () => {
-          const newTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
-          updateTheme(newTheme);
-      });
-
-      // --- Existing Interactivity Logic ---
-      menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('hidden');
-        sidebar.classList.toggle('flex');
-      });
-
-      appsMenuButton.addEventListener('click', (event) => {
-        event.stopPropagation();
-        appsMenu.classList.toggle('hidden');
-      });
-
-      window.addEventListener('click', (e) => {
-        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth < 1024) {
-            if (!sidebar.classList.contains('hidden')){
-                 sidebar.classList.add('hidden');
-                 sidebar.classList.remove('flex');
-            }
-        }
-        if (!appsMenu.contains(e.target) && !appsMenuButton.contains(e.target)) {
-            if (!appsMenu.classList.contains('hidden')){
-                appsMenu.classList.add('hidden');
-            }
-        }
-      });
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
