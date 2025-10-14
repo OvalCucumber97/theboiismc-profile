@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data & Privacy - TheBoiisMC</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Custom Tailwind Configuration for Dark Mode & Theme
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': {
+              '50': '#eff6ff', '100': '#dbeafe', '200': '#bfdbfe', '300': '#93c5fd', 
+              '400': '#60a5fa', '500': '#3b82f6', '600': '#2563eb', '700': '#1d4ed8', 
+              '800': '#1e40af', '900': '#1e3a8a', '950': '#172554',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://placehold.co data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://accounts.theboiismc.com;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    .material-symbols-sharp { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .active-link {
+      background-color: #eff6ff; color: #2563eb; font-weight: 600;
+      @apply dark:bg-primary-blue-900 dark:text-primary-blue-300;
+    }
+    .active-link .material-symbols-sharp { color: #2563eb; @apply dark:text-primary-blue-300; }
+  </style>
+</head>
+
+<body class="bg-slate-50 font-sans text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+  <div class="flex min-h-screen">
+    
+    <aside id="sidebar" class="w-64 bg-white dark:bg-gray-800 shadow-xl p-4 flex-col justify-between hidden lg:flex fixed h-full z-20 transition-colors duration-300">
+      <div>
+        <div class="flex items-center space-x-3 mb-10 p-2 border-b border-gray-100 dark:border-gray-700 pb-4">
+          <img src="https://placehold.co/40x40/2563eb/ffffff?text=T" alt="TheBoiisMC Logo" class="rounded-full">
+          <h1 class="text-xl font-extrabold text-gray-900 dark:text-white">TheBoiisMC</h1>
+        </div>
+        <nav>
+          <ul class="space-y-1" id="sidebar-nav">
+            <li><a href="index.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">home</span><span class="text-gray-700 dark:text-gray-200">Home</span></a></li>
+            <li><a href="personal-info.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">person</span><span class="text-gray-700 dark:text-gray-200">Personal Info</span></a></li>
+            <li><a href="security.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">shield</span><span class="text-gray-700 dark:text-gray-200">Security</span></a></li>
+            <li><a href="data-privacy.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150 **active-link**"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">privacy_tip</span><span class="text-gray-700 dark:text-gray-200">Data & Privacy</span></a></li>
+            <li><a href="payments.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">credit_card</span><span class="text-gray-700 dark:text-gray-200">Payments & Subs</span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <ul class="space-y-1">
+            <li>
+                <button id="theme-toggle" class="w-full flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150">
+                    <span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400" id="theme-icon">dark_mode</span>
+                    <span class="text-gray-700 dark:text-gray-200" id="theme-text">Dark Mode</span>
+                </button>
+            </li>
+            <li><a href="#logout" class="flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">logout</span><span class="text-gray-700 dark:text-gray-200">Log Out</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="flex-1 lg:ml-64">
+      <div class="p-4 sm:p-6 md:p-8">
+        
+        <header class="flex justify-between items-center mb-10 bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg dark:shadow-2xl transition-colors duration-300">
+          <div class="flex items-center w-full max-w-lg">
+            <button id="menu-toggle" class="lg:hidden text-gray-600 dark:text-gray-300 mr-4">
+              <span class="material-symbols-sharp text-3xl">menu</span>
+            </button>
+            <div class="relative w-full">
+              <input type="text" class="w-full bg-slate-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 pl-12 border border-gray-200 dark:border-gray-700 rounded-full focus:ring-2 focus:ring-primary-blue-600 focus:border-primary-blue-600 transition" placeholder="Search account..." id="search-input">
+              <span class="material-symbols-sharp absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4 sm:space-x-5">
+            <div class="relative">
+                <button id="apps-menu-button" class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    <span class="material-symbols-sharp text-2xl">apps</span>
+                </button>
+                <div id="apps-menu" class="absolute hidden right-0 mt-2 bg-white dark:bg-gray-700 shadow-xl rounded-2xl w-80 border border-gray-200 dark:border-gray-600 z-30 p-4 transition-colors duration-300">
+                    <div class="grid grid-cols-2 gap-2">
+                        <a href="https://maps.theboiismc.com" class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-gray-600 text-center transition">
+                            <span class="material-symbols-sharp text-3xl text-primary-blue-500">map</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-200 mt-1">Maps</span>
+                        </a>
+                        <a href="https://drive.theboiismc.com" class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-gray-600 text-center transition">
+                            <span class="material-symbols-sharp text-3xl text-green-500">cloud</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-200 mt-1">Drive</span>
+                        </a>
+                        <a href="https://account.theboiismc.com" class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-gray-600 text-center transition">
+                            <span class="material-symbols-sharp text-3xl text-purple-500">account_circle</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-200 mt-1">Account</span>
+                        </a>
+                        <a href="https://search.theboiismc.com" class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-gray-600 text-center transition">
+                            <span class="material-symbols-sharp text-3xl text-red-500">search</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-200 mt-1">Search</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button>
+              <img src="https://placehold.co/40x40/7e22ce/ffffff?text=J" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-blue-500">
+            </button>
+          </div>
+        </header>
+
+        <section id="main-content">
+            
+            <nav class="mb-6" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                    <li>
+                        <a href="index.html" class="flex items-center hover:text-primary-blue-600 dark:hover:text-primary-blue-400 transition">
+                            <span class="material-symbols-sharp text-lg">home</span>
+                            <span class="ml-1 hidden sm:inline">Account Home</span>
+                        </a>
+                    </li>
+                    <li class="material-symbols-sharp text-lg mx-1">chevron_right</li>
+                    <li><span class="text-gray-800 dark:text-white font-medium">Data & Privacy</span></li>
+                </ol>
+            </nav>
+
+            <a href="index.html" class="flex items-center text-primary-blue-600 dark:text-primary-blue-400 mb-8 hover:underline">
+                <span class="material-symbols-sharp text-xl mr-2">arrow_back</span>
+                <span class="font-medium">Back to Home</span>
+            </a>
+
+            <div class="grid grid-cols-1 gap-6 lg:gap-8">
+                
+                <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center"><span class="material-symbols-sharp text-2xl mr-3 text-amber-500">track_changes</span> Activity Controls</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Choose which activities are saved in your account.</p>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-700 pb-3">
+                            <p class="text-gray-700 dark:text-gray-200">Web & App Activity</p>
+                            <span class="text-green-500 font-medium">ON</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-700 pb-3">
+                            <p class="text-gray-700 dark:text-gray-200">Location History</p>
+                            <span class="text-red-500 font-medium">OFF</span>
+                        </div>
+                        <a href="#manage-activity" class="inline-flex items-center text-primary-blue-600 dark:text-primary-blue-400 text-sm hover:underline">
+                        Manage Activity Settings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center"><span class="material-symbols-sharp text-2xl mr-3 text-purple-500">ads_click</span> Ad Personalization</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">You can control how **TheBoiisMC** uses your data to show you relevant ads.</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-gray-700 dark:text-gray-200">Ad Personalization is</p>
+                        <span class="text-green-500 font-medium">Enabled</span>
+                    </div>
+                    <a href="#manage-ads" class="mt-4 inline-flex items-center text-primary-blue-600 dark:text-primary-blue-400 text-sm hover:underline">
+                        Go to Ad Settings
+                    </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center"><span class="material-symbols-sharp text-2xl mr-3 text-primary-blue-500">cloud_download</span> Download or Delete</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Create a copy of your data or delete your entire account.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#download-data" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                            Download Your Data
+                        </a>
+                        <a href="#delete-account" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition">
+                            Delete Account
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+        </section>
+
+        <footer class="mt-16 text-center text-gray-500 dark:text-gray-400">
+          <p class="text-sm">Your data is secured and protected. For more information, read our <a href="/privacy" class="text-primary-blue-600 hover:underline dark:text-primary-blue-400">Privacy Policy</a>.</p>
+          <p class="text-xs mt-4">&copy; 2025 TheBoiisMC. All rights reserved.</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const sidebar = document.getElementById('sidebar');
+      const appsMenuButton = document.getElementById('apps-menu-button');
+      const appsMenu = document.getElementById('apps-menu');
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const themeText = document.getElementById('theme-text');
+
+      // --- Theme Logic ---
+      const htmlEl = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function updateTheme(theme) {
+          if (theme === 'dark') {
+              htmlEl.classList.add('dark');
+              themeIcon.textContent = 'light_mode';
+              themeText.textContent = 'Light Mode';
+          } else {
+              htmlEl.classList.remove('dark');
+              themeIcon.textContent = 'dark_mode';
+              themeText.textContent = 'Dark Mode';
+          }
+          localStorage.setItem('theme', theme);
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          updateTheme(savedTheme);
+      } else if (prefersDark.matches) {
+          updateTheme('dark');
+      } else {
+          updateTheme('light');
+      }
+      
+      prefersDark.addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+              updateTheme(e.matches ? 'dark' : 'light');
+          }
+      });
+
+      themeToggle.addEventListener('click', () => {
+          const newTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
+          updateTheme(newTheme);
+      });
+
+      // --- Existing Interactivity Logic ---
+      menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+        sidebar.classList.toggle('flex');
+      });
+
+      appsMenuButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        appsMenu.classList.toggle('hidden');
+      });
+
+      window.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth < 1024) {
+            if (!sidebar.classList.contains('hidden')){
+                 sidebar.classList.add('hidden');
+                 sidebar.classList.remove('flex');
+            }
+        }
+        if (!appsMenu.contains(e.target) && !appsMenuButton.contains(e.target)) {
+            if (!appsMenu.classList.contains('hidden')){
+                appsMenu.classList.add('hidden');
+            }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
