@@ -15,8 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
 
+    // --- NEW: User Data Elements ---
+    const userNameElements = document.querySelectorAll('.dynamic-user-name');
+    const userEmailElements = document.querySelectorAll('.dynamic-user-email');
+    const profileIconElements = document.querySelectorAll('.dynamic-profile-icon');
+    const welcomeHeader = document.getElementById('welcome-header');
+
+
     // Define search data based on available pages and descriptions
-    // Added a 'category' key for advanced filtering/labeling
     const searchData = [
         // Settings Pages
         { title: "Account Home", description: "Overview of your account settings and status.", url: "index.html", category: "Settings" },
@@ -31,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { title: "API Keys", description: "Manage your authentication keys.", url: "dev-tools.html", category: "Developer" }
     ];
 
-    // --- Theme Logic (omitted for brevity, assume it's the same) ---
+    // --- Theme Logic ---
     function updateTheme(theme) {
         if (theme === 'dark') {
             htmlEl.classList.add('dark');
@@ -44,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         localStorage.setItem('theme', theme);
     }
-    // Initial theme setup (for consistency)
+    // Initial theme setup
     if (htmlEl.classList.contains('dark')) {
         themeIcon.textContent = 'light_mode';
         themeText.textContent = 'Light Mode';
@@ -62,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTheme(newTheme);
     });
 
-    // --- Sidebar Link Activation Logic (omitted for brevity, assume it's the same) ---
+    // --- Sidebar Link Activation Logic ---
     function setActiveLink() {
         const currentPath = window.location.pathname.split('/').pop();
         sidebarLinks.forEach(link => {
@@ -75,7 +81,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setActiveLink();
     
-    // --- Advanced Search Functionality (UPDATED) ---
+    // --- NEW: Dynamic User Data Fetch Function ---
+    function fetchUserData() {
+        // Simulate fetching data from https://accounts.theboiismc.com/api/user-data
+        const mockUserData = {
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john.doe@theboiismc.com',
+            initials: 'JD',
+            // Set to a URL to test image rendering, or null/empty string for initials
+            profilePicUrl: null 
+        };
+
+        const fullName = `${mockUserData.firstName} ${mockUserData.lastName}`;
+
+        // 1. Update text elements (Name and Email)
+        userNameElements.forEach(el => el.textContent = fullName);
+        userEmailElements.forEach(el => el.textContent = mockUserData.email);
+        
+        // 2. Update Welcome Header
+        if (welcomeHeader) {
+            welcomeHeader.textContent = `Welcome, ${mockUserData.firstName}`;
+        }
+
+        // 3. Update Profile Icons
+        profileIconElements.forEach(el => {
+            // Clear existing content and apply base styling
+            el.innerHTML = '';
+
+            if (mockUserData.profilePicUrl) {
+                // If a picture URL exists, use an image
+                const img = document.createElement('img');
+                img.src = mockUserData.profilePicUrl;
+                img.alt = fullName;
+                img.classList.add('w-full', 'h-full', 'object-cover', 'rounded-full');
+                el.appendChild(img);
+                // Remove initials styling if image is used
+                el.classList.remove('bg-primary-blue-600', 'text-white'); 
+            } else {
+                // Otherwise, use initials for the avatar
+                el.classList.add('bg-primary-blue-600', 'text-white');
+                const span = document.createElement('span');
+                span.textContent = mockUserData.initials;
+                el.appendChild(span);
+            }
+        });
+    }
+
+    // --- Advanced Search Functionality ---
     searchInput.addEventListener('input', () => {
         const fullQuery = searchInput.value.toLowerCase().trim();
         searchResults.innerHTML = '';
@@ -84,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let filterCategory = null;
             let query = fullQuery;
 
-            // 1. Check for Search Operators
+            // 1. Check for Search Operators (settings: or profile:)
             if (fullQuery.startsWith('settings:')) {
                 filterCategory = 'Settings';
                 query = fullQuery.substring('settings:'.length).trim();
@@ -93,9 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 query = fullQuery.substring(fullQuery.startsWith('profile:') ? 'profile:'.length : 'personal:'.length).trim();
             }
 
-            // If the user cleared the query after the operator, show all results for the category
+            // Ensure query is not empty if operator was used
             if (query === '' && filterCategory) {
-                 query = fullQuery; // Use the full query to allow filtering by the operator itself
+                 query = fullQuery;
             }
             
             // 2. Filter Results
@@ -105,11 +158,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const itemMatchesCategory = filterCategory === null || item.category === filterCategory;
 
-                // Handle the case where the user searches for the category keyword itself (e.g., just 'security')
+                // Also allow matching if the query is just the category keyword itself
                 const categoryKeywordMatch = item.category.toLowerCase().includes(fullQuery);
 
                 return (itemMatchesQuery && itemMatchesCategory) || categoryKeywordMatch;
-            }).slice(0, 8); // Increased limit for better visibility
+            }).slice(0, 8); 
 
             if (filteredResults.length > 0) {
                 // 3. Categorize and Group Results
@@ -154,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // --- UI Interactivity Logic (omitted for brevity, assume it's the same) ---
+    // --- UI Interactivity Logic (remains the same) ---
     // Mobile Menu Toggle
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('hidden');
@@ -201,4 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    
+    // *** EXECUTE DYNAMIC DATA FETCH ON PAGE LOAD ***
+    fetchUserData(); 
 });
