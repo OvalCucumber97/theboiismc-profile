@@ -6,7 +6,7 @@ const OIDC_CONFIG = {
     // !!! IMPORTANT: REPLACE THESE PLACEHOLDERS WITH YOUR ACTUAL IDENTITY PROVIDER DETAILS !!!
     authority: "https://accounts.theboiismc.com/application/o/accountdashboard/.well-known/openid-configuration", // e.g., 'https://your-auth-server.com'
     client_id: "yopePhMvPt1dj65UFbmVkxHIuX7MDeeNBoobKSQy", // The client ID registered for this application
-    redirect_uri: "myaccount.theboiismc.com" // This page (index.html) handles both the dashboard and the callback
+    redirect_uri: "https://myaccount.theboiismc.com" // This page (index.html) handles both the dashboard and the callback
     response_type: "code", // Using Authorization Code Flow with PKCE
     scope: "openid profile email", // Standard scopes for basic user inf
     userStore: window.localStorage, // Persist session across browser restarts
