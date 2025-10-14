@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const appsMenuButton = document.getElementById('apps-menu-button');
     const appsMenu = document.getElementById('apps-menu');
-    const profileMenuButton = document.getElementById('profile-menu-button'); // NEW
-    const profileMenu = document.getElementById('profile-menu'); // NEW
+    const profileMenuButton = document.getElementById('profile-menu-button');
+    const profileMenu = document.getElementById('profile-menu');
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const themeText = document.getElementById('theme-text');
@@ -12,22 +12,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const htmlEl = document.documentElement;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const searchInput = document.getElementById('search-input'); // NEW
-    const searchResults = document.getElementById('search-results'); // NEW
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
 
     // Define search data based on available pages and descriptions
+    // Added a 'category' key for advanced filtering/labeling
     const searchData = [
-        { title: "Account Home", description: "Overview of your account settings and status.", url: "index.html" },
-        { title: "Personal Info", description: "Change name, email, and contact information.", url: "personal-info.html" },
-        { title: "Security", description: "Update password, manage 2FA, and review devices.", url: "security.html" },
-        { title: "Password Change", description: "Security settings to update your account password.", url: "security.html" },
-        { title: "2-Step Verification", description: "Security setting for two-factor authentication.", url: "security.html" },
-        { title: "Data & Privacy", description: "Review and manage data retention and activity controls.", url: "data-privacy.html" },
-        { title: "Developer Tools", description: "Manage API keys and access documentation.", url: "dev-tools.html" },
-        { title: "API Keys", description: "Manage your authentication keys.", url: "dev-tools.html" }
+        // Settings Pages
+        { title: "Account Home", description: "Overview of your account settings and status.", url: "index.html", category: "Settings" },
+        { title: "Security", description: "Update password, manage 2FA, and review devices.", url: "security.html", category: "Settings" },
+        { title: "Password Change", description: "Security setting to update your account password.", url: "security.html", category: "Settings" },
+        { title: "2-Step Verification", description: "Security setting for two-factor authentication.", url: "security.html", category: "Settings" },
+        { title: "Data & Privacy", description: "Review and manage data retention and activity controls.", url: "data-privacy.html", category: "Settings" },
+        // Profile/Personal Info Pages
+        { title: "Personal Info", description: "Change name, email, and contact information.", url: "personal-info.html", category: "Profile" },
+        { title: "Manage Account", description: "Manage profile, data, security, and payment options.", url: "personal-info.html", category: "Profile" },
+        { title: "Developer Tools", description: "Manage API keys and access documentation.", url: "dev-tools.html", category: "Developer" },
+        { title: "API Keys", description: "Manage your authentication keys.", url: "dev-tools.html", category: "Developer" }
     ];
 
-    // --- Theme Logic ---
+    // --- Theme Logic (omitted for brevity, assume it's the same) ---
     function updateTheme(theme) {
         if (theme === 'dark') {
             htmlEl.classList.add('dark');
@@ -40,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         localStorage.setItem('theme', theme);
     }
-
+    // Initial theme setup (for consistency)
     if (htmlEl.classList.contains('dark')) {
         themeIcon.textContent = 'light_mode';
         themeText.textContent = 'Light Mode';
@@ -48,19 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
         themeIcon.textContent = 'dark_mode';
         themeText.textContent = 'Dark Mode';
     }
-
     prefersDark.addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) {
             updateTheme(e.matches ? 'dark' : 'light');
         }
     });
-
     themeToggle.addEventListener('click', () => {
         const newTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
         updateTheme(newTheme);
     });
 
-    // --- Sidebar Link Activation Logic ---
+    // --- Sidebar Link Activation Logic (omitted for brevity, assume it's the same) ---
     function setActiveLink() {
         const currentPath = window.location.pathname.split('/').pop();
         sidebarLinks.forEach(link => {
@@ -71,34 +73,80 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
     setActiveLink();
-
-    // --- Search Functionality (NEW) ---
+    
+    // --- Advanced Search Functionality (UPDATED) ---
     searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase().trim();
+        const fullQuery = searchInput.value.toLowerCase().trim();
         searchResults.innerHTML = '';
         
-        if (query.length > 1) {
-            const filteredResults = searchData.filter(item => 
-                item.title.toLowerCase().includes(query) || 
-                item.description.toLowerCase().includes(query)
-            ).slice(0, 5); // Limit to top 5 results
+        if (fullQuery.length > 1) {
+            let filterCategory = null;
+            let query = fullQuery;
+
+            // 1. Check for Search Operators
+            if (fullQuery.startsWith('settings:')) {
+                filterCategory = 'Settings';
+                query = fullQuery.substring('settings:'.length).trim();
+            } else if (fullQuery.startsWith('profile:') || fullQuery.startsWith('personal:')) {
+                filterCategory = 'Profile';
+                query = fullQuery.substring(fullQuery.startsWith('profile:') ? 'profile:'.length : 'personal:'.length).trim();
+            }
+
+            // If the user cleared the query after the operator, show all results for the category
+            if (query === '' && filterCategory) {
+                 query = fullQuery; // Use the full query to allow filtering by the operator itself
+            }
+            
+            // 2. Filter Results
+            const filteredResults = searchData.filter(item => {
+                const itemMatchesQuery = item.title.toLowerCase().includes(query) || 
+                                         item.description.toLowerCase().includes(query);
+                
+                const itemMatchesCategory = filterCategory === null || item.category === filterCategory;
+
+                // Handle the case where the user searches for the category keyword itself (e.g., just 'security')
+                const categoryKeywordMatch = item.category.toLowerCase().includes(fullQuery);
+
+                return (itemMatchesQuery && itemMatchesCategory) || categoryKeywordMatch;
+            }).slice(0, 8); // Increased limit for better visibility
 
             if (filteredResults.length > 0) {
-                filteredResults.forEach(item => {
-                    const resultLink = document.createElement('a');
-                    resultLink.href = item.url;
-                    resultLink.classList.add('flex', 'flex-col', 'p-3', 'hover:bg-slate-100', 'dark:hover:bg-gray-600', 'rounded-xl', 'transition');
-                    resultLink.innerHTML = `
-                        <span class="text-sm font-semibold text-gray-900 dark:text-white">${item.title}</span>
-                        <span class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">${item.description}</span>
-                    `;
-                    searchResults.appendChild(resultLink);
-                });
+                // 3. Categorize and Group Results
+                const groupedResults = filteredResults.reduce((acc, item) => {
+                    (acc[item.category] = acc[item.category] || []).push(item);
+                    return acc;
+                }, {});
+
+                // 4. Render Grouped Results with Labels
+                for (const category in groupedResults) {
+                    // Add the category label (Section Header)
+                    const header = document.createElement('h3');
+                    header.classList.add('text-xs', 'font-bold', 'text-primary-blue-600', 'dark:text-primary-blue-400', 'uppercase', 'px-3', 'py-1', 'mt-1', 'mb-1');
+                    header.textContent = category;
+                    searchResults.appendChild(header);
+
+                    // Add the search links
+                    groupedResults[category].forEach(item => {
+                        const resultLink = document.createElement('a');
+                        resultLink.href = item.url;
+                        resultLink.classList.add('flex', 'flex-col', 'p-3', 'hover:bg-slate-100', 'dark:hover:bg-gray-600', 'rounded-xl', 'transition');
+                        resultLink.innerHTML = `
+                            <span class="text-sm font-semibold text-gray-900 dark:text-white">${item.title}</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">${item.description}</span>
+                        `;
+                        searchResults.appendChild(resultLink);
+                    });
+                }
+                
                 searchResults.classList.remove('hidden');
             } else {
-                searchResults.classList.add('hidden');
+                // Display "No results found"
+                const noResults = document.createElement('p');
+                noResults.classList.add('p-3', 'text-sm', 'text-gray-500', 'dark:text-gray-400', 'text-center');
+                noResults.textContent = 'No results found.';
+                searchResults.appendChild(noResults);
+                searchResults.classList.remove('hidden');
             }
         } else {
             searchResults.classList.add('hidden');
@@ -106,8 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // --- UI Interactivity Logic (Menu Toggle, Apps Menu & Profile Dropdown) ---
-    
+    // --- UI Interactivity Logic (omitted for brevity, assume it's the same) ---
     // Mobile Menu Toggle
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('hidden');
@@ -123,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Profile Menu Dropdown (NEW)
+    // Profile Menu Dropdown 
     if (profileMenuButton) {
         profileMenuButton.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -147,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 appsMenu.classList.add('hidden');
             }
         }
-        // Close Profile Menu (NEW)
+        // Close Profile Menu
         if (profileMenu && profileMenuButton && !profileMenu.contains(e.target) && !profileMenuButton.contains(e.target)) {
             if (!profileMenu.classList.contains('hidden')){
                 profileMenu.classList.add('hidden');
