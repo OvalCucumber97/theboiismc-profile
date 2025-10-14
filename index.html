@@ -33,7 +33,7 @@
               '400': '#60a5fa', '500': '#3b82f6', '600': '#2563eb', '700': '#1d4ed8', 
               '800': '#1e40af', '900': '#1e3a8a', '950': '#172554',
             },
-            // NEW: Added a vibrant secondary accent color
+            // Added a vibrant secondary accent color
             'accent-yellow': { 
               '300': '#fcd34d', // Light for dark mode CTAs
               '500': '#f59e0b', // Primary for light mode CTAs
@@ -51,7 +51,7 @@
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
-    .font-poppins { font-family: 'Poppins', sans-serif; } /* NEW */
+    .font-poppins { font-family: 'Poppins', sans-serif; }
     .material-symbols-sharp {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
@@ -110,8 +110,10 @@
               <span class="material-symbols-sharp text-3xl">menu</span>
             </button>
             <div class="relative w-full">
-              <input type="text" class="w-full bg-slate-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 pl-12 border border-gray-200 dark:border-gray-700 rounded-full focus:ring-2 focus:ring-primary-blue-600 focus:border-primary-blue-600 transition" placeholder="Search account..." id="search-input">
+              <input type="text" class="w-full bg-slate-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 pl-12 border border-gray-200 dark:border-gray-700 rounded-full focus:ring-2 focus:ring-primary-blue-600 focus:border-primary-blue-600 transition" placeholder="Search account settings and profile..." id="search-input">
               <span class="material-symbols-sharp absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+               <div id="search-results" class="absolute hidden top-full mt-2 w-full bg-white dark:bg-gray-700 shadow-xl rounded-3xl border border-gray-200 dark:border-gray-600 z-30 p-2 transition-colors duration-300 max-h-60 overflow-y-auto">
+                    </div>
             </div>
           </div>
           <div class="flex items-center space-x-4 sm:space-x-5">
@@ -140,10 +142,36 @@
                     </div>
                 </div>
             </div>
-            <a href="personal-info.html" title="View Profile" 
-               class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                <span class="material-symbols-sharp text-2xl">account_circle</span>
-            </a>
+            <div class="relative">
+                <button id="profile-menu-button" title="View Profile Options" 
+                    class="text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    <span class="material-symbols-sharp text-2xl">account_circle</span>
+                </button>
+                 <div id="profile-menu" class="absolute hidden right-0 mt-2 w-72 bg-white dark:bg-gray-700 shadow-xl rounded-3xl border border-gray-200 dark:border-gray-600 z-30 p-4 transition-colors duration-300">
+                    
+                    <div class="text-center pb-3 border-b border-gray-100 dark:border-gray-600 mb-3">
+                        <span class="material-symbols-sharp text-6xl text-primary-blue-600 dark:text-primary-blue-400 mx-auto">person_circle</span>
+                        <p class="text-lg font-semibold text-gray-900 dark:text-white mt-1">John Doe</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">johndoe@theboiismc.com</p>
+                    </div>
+
+                    <a href="personal-info.html" class="flex items-center space-x-3 p-3 text-gray-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-gray-600 rounded-xl transition">
+                        <span class="material-symbols-sharp text-lg">manage_accounts</span>
+                        <span class="text-sm font-medium">Manage Your Account</span>
+                    </a>
+                    <a href="#another-account" class="flex items-center space-x-3 p-3 text-gray-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-gray-600 rounded-xl transition">
+                        <span class="material-symbols-sharp text-lg">person_add</span>
+                        <span class="text-sm font-medium">Add another account</span>
+                    </a>
+                    
+                    <div class="pt-3 border-t border-gray-100 dark:border-gray-600 mt-3">
+                        <a href="#logout" class="flex items-center space-x-3 p-3 text-red-500 hover:bg-red-50 dark:hover:bg-gray-800 rounded-xl transition">
+                            <span class="material-symbols-sharp text-lg">logout</span>
+                            <span class="text-sm font-medium">Sign out</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
           </div>
         </header>
 
@@ -160,8 +188,8 @@
                 <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
                   <span class="material-symbols-sharp text-7xl text-primary-blue-600 dark:text-primary-blue-400 w-20 h-20 flex items-center justify-center rounded-full border-4 border-primary-blue-500">person_circle</span>
                   <div>
-                    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Welcome, John Doe 👋</h1>
-                    <p class="text-gray-600 dark:text-gray-400 mt-1">Manage your info, privacy, and dev tools to make **TheBoiisMC** work better for you.</p>
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Welcome, John Doe</h1>
+                    <p class="text-gray-600 dark:text-gray-400 mt-1">Manage your information, privacy settings, and developer tools easily.</p>
                   </div>
                 </div>
               </div>
@@ -172,7 +200,7 @@
                   <section class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-primary-blue-500 transition-all duration-300 group">
                         <div class="flex justify-between items-start h-full">
                           <div>
-                            <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Personal Info 👤</h2>
+                            <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Personal Info</h2>
                             <p class="text-gray-600 dark:text-gray-400 mt-2">Update your name, email, and other personal details.</p>
                           </div>
                           <span class="material-symbols-sharp text-gray-400 dark:text-gray-500 mt-1 group-hover:translate-x-1 transition-transform duration-200">arrow_forward_ios</span>
@@ -183,7 +211,7 @@
                   <section class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-primary-blue-500 transition-all duration-300 group">
                     <div class="flex justify-between items-start h-full">
                       <div>
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Security 🛡️</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Security</h2>
                         <p class="text-gray-600 dark:text-gray-400 mt-2">Change your password and manage two-factor authentication.</p>
                       </div>
                       <span class="material-symbols-sharp text-gray-400 dark:text-gray-500 mt-1 group-hover:translate-x-1 transition-transform duration-200">arrow_forward_ios</span>
@@ -194,7 +222,7 @@
                   <section class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-primary-blue-500 transition-all duration-300 group">
                     <div class="flex justify-between items-start h-full">
                       <div>
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Data & Privacy ⚙️</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Data & Privacy</h2>
                         <p class="text-gray-600 dark:text-gray-400 mt-2">See the data in your account and choose what's saved.</p>
                       </div>
                       <span class="material-symbols-sharp text-gray-400 dark:text-gray-500 mt-1 group-hover:translate-x-1 transition-transform duration-200">arrow_forward_ios</span>
@@ -205,7 +233,7 @@
                   <section id="developer-tools-card" class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-primary-blue-500 transition-all duration-300 group">
                     <div class="flex justify-between items-start h-full">
                       <div>
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Developer Tools 💻</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Developer Tools</h2>
                         <p class="text-gray-600 dark:text-gray-400 mt-2">Manage API keys, access documentation, and view logs.</p>
                       </div>
                       <span class="material-symbols-sharp text-gray-400 dark:text-gray-500 mt-1 group-hover:translate-x-1 transition-transform duration-200">arrow_forward_ios</span>
