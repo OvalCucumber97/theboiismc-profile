@@ -24,11 +24,11 @@
   <script>
     // Custom Tailwind Configuration for Dark Mode & Theme
     tailwind.config = {
-      darkMode: 'class', // Enable dark mode based on the 'dark' class on the html tag
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            'primary-blue': { // Custom primary blue for accents
+            'primary-blue': { 
               '50': '#eff6ff', '100': '#dbeafe', '200': '#bfdbfe', '300': '#93c5fd', 
               '400': '#60a5fa', '500': '#3b82f6', '600': '#2563eb', '700': '#1d4ed8', 
               '800': '#1e40af', '900': '#1e3a8a', '950': '#172554',
@@ -93,7 +93,7 @@
       </div>
     </aside>
 
-    <main class="flex-1 **lg:ml-64**">
+    <main class="flex-1 lg:ml-64">
       <div class="p-4 sm:p-6 md:p-8">
         
         <header class="flex justify-between items-center mb-10 bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg dark:shadow-2xl transition-colors duration-300">
@@ -132,9 +132,9 @@
                     </div>
                 </div>
             </div>
-            <button>
-              <img src="https://placehold.co/40x40/7e22ce/ffffff?text=J" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-blue-500">
-            </button>
+            <a href="personal-info.html" title="View Profile">
+                <img src="https://placehold.co/40x40/7e22ce/ffffff?text=J" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-blue-500 hover:ring-2 hover:ring-primary-blue-500 transition">
+            </a>
           </div>
         </header>
 
