@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Account Dashboard</title>
+  <title>My Account Dashboard - TheBoiisMC</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome CDN for Icons -->
@@ -15,7 +15,10 @@
 
     <!-- Sidebar -->
     <div class="w-72 bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 space-y-6">
-      <h1 class="text-3xl font-semibold mb-10">My Account</h1>
+      <div class="flex items-center space-x-4 mb-10">
+        <img src="https://via.placeholder.com/40?text=T" alt="TheBoiisMC Logo" class="rounded-full">
+        <h1 class="text-3xl font-semibold">TheBoiisMC</h1>
+      </div>
       <ul class="space-y-4">
         <li><a href="#profile" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
             <i class="fas fa-user-circle w-5 h-5"></i>
@@ -47,6 +50,12 @@
 
     <!-- Main content -->
     <div class="flex-1 p-8">
+
+      <!-- Hero Section -->
+      <section class="bg-blue-600 text-white text-center py-16 rounded-lg shadow-lg mb-12">
+        <h2 class="text-4xl font-semibold">Welcome Back to TheBoiisMC</h2>
+        <p class="mt-4 text-lg">Your profile and settings are all here. Keep your account information up-to-date to ensure a smooth experience.</p>
+      </section>
 
       <!-- Profile Section -->
       <section id="profile" class="mb-12">
@@ -131,6 +140,12 @@
           <button class="mt-4 bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700 transition duration-200">Save Privacy Settings</button>
         </div>
       </section>
+
+      <!-- Footer with Trust Indicators -->
+      <footer class="mt-16 text-center text-gray-600">
+        <p class="text-sm">Your data is secured and protected. For more information, check our <a href="/privacy-policy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+        <p class="text-sm mt-4">Powered by TheBoiisMC &bull; All rights reserved.</p>
+      </footer>
 
     </div>
   </div>
