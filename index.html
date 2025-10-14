@@ -14,17 +14,9 @@
         extend: {
           colors: {
             'primary-blue': { // Custom primary blue for accents
-              '50': '#eff6ff',
-              '100': '#dbeafe',
-              '200': '#bfdbfe',
-              '300': '#93c5fd',
-              '400': '#60a5fa',
-              '500': '#3b82f6',
-              '600': '#2563eb', // Use 600 as main accent
-              '700': '#1d4ed8',
-              '800': '#1e40af',
-              '900': '#1e3a8a',
-              '950': '#172554',
+              '50': '#eff6ff', '100': '#dbeafe', '200': '#bfdbfe', '300': '#93c5fd', 
+              '400': '#60a5fa', '500': '#3b82f6', '600': '#2563eb', '700': '#1d4ed8', 
+              '800': '#1e40af', '900': '#1e3a8a', '950': '#172554',
             },
           }
         }
@@ -40,12 +32,10 @@
     .material-symbols-sharp {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
-    /* Custom style for the active sidebar link (Adjusted for better contrast) */
     .active-link {
       background-color: #eff6ff; /* primary-blue-50 */
       color: #2563eb; /* primary-blue-600 */
       font-weight: 600;
-      /* Dark mode styles */
       @apply dark:bg-primary-blue-900 dark:text-primary-blue-300;
     }
     .active-link .material-symbols-sharp {
@@ -70,7 +60,7 @@
             <li><a href="personal-info.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">person</span><span class="text-gray-700 dark:text-gray-200">Personal Info</span></a></li>
             <li><a href="security.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">shield</span><span class="text-gray-700 dark:text-gray-200">Security</span></a></li>
             <li><a href="data-privacy.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">privacy_tip</span><span class="text-gray-700 dark:text-gray-200">Data & Privacy</span></a></li>
-            <li><a href="payments.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">credit_card</span><span class="text-gray-700 dark:text-gray-200">Payments & Subs</span></a></li>
+            <li><a href="developer-tools.html" class="sidebar-link flex items-center space-x-4 hover:bg-slate-100 dark:hover:bg-gray-700 px-4 py-3 rounded-xl transition ease-in-out duration-150"><span class="material-symbols-sharp w-6 text-center text-lg text-gray-500 dark:text-gray-400">code</span><span class="text-gray-700 dark:text-gray-200">Developer Tools</span></a></li>
           </ul>
         </nav>
       </div>
@@ -146,7 +136,7 @@
                   <img src="https://placehold.co/80x80/7e22ce/ffffff?text=J" alt="User Avatar" class="w-20 h-20 rounded-full border-4 border-primary-blue-500">
                   <div>
                     <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Welcome, John Doe</h1>
-                    <p class="text-gray-600 dark:text-gray-400 mt-1">Manage your info, privacy, and security to make **TheBoiisMC** work better for you.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mt-1">Manage your info, privacy, and development settings to make **TheBoiisMC** work better for you.</p>
                   </div>
                 </div>
               </div>
@@ -186,12 +176,12 @@
                     </div>
                   </section>
               </a>
-              <a href="payments.html" class="block">
-                  <section id="subscriptions" class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-primary-blue-500 transition-all duration-300 group">
+              <a href="developer-tools.html" class="block">
+                  <section id="developer-tools-card" class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-primary-blue-500 transition-all duration-300 group">
                     <div class="flex justify-between items-start h-full">
                       <div>
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Payments & Subscriptions</h2>
-                        <p class="text-gray-600 dark:text-gray-400 mt-2">Manage payment methods and view your purchase history.</p>
+                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-blue-600 dark:group-hover:text-primary-blue-400 transition-colors duration-200">Developer Tools</h2>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2">Manage API keys, access documentation, and view logs.</p>
                       </div>
                       <span class="material-symbols-sharp text-gray-400 dark:text-gray-500 mt-1 group-hover:translate-x-1 transition-transform duration-200">arrow_forward_ios</span>
                     </div>
@@ -220,8 +210,6 @@
       const themeText = document.getElementById('theme-text');
 
       // --- Theme Logic ---
-      
-      // 1. Check system preference and load saved preference
       const htmlEl = document.documentElement;
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -238,7 +226,6 @@
           localStorage.setItem('theme', theme);
       }
 
-      // Initial theme setup (prioritize saved, then system)
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
           updateTheme(savedTheme);
@@ -248,55 +235,41 @@
           updateTheme('light');
       }
       
-      // Listen for system theme changes
       prefersDark.addEventListener('change', (e) => {
-          // Only switch automatically if no manual preference is saved
           if (!localStorage.getItem('theme')) {
               updateTheme(e.matches ? 'dark' : 'light');
           }
       });
 
-      // Manual theme toggle
       themeToggle.addEventListener('click', () => {
           const newTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
           updateTheme(newTheme);
       });
 
       // --- Existing Interactivity Logic ---
-
-      // Mobile sidebar toggle
       menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('hidden');
         sidebar.classList.toggle('flex');
       });
 
-      // Apps menu toggle
       appsMenuButton.addEventListener('click', (event) => {
         event.stopPropagation();
         appsMenu.classList.toggle('hidden');
       });
 
-      // Hide menus if click is outside
       window.addEventListener('click', (e) => {
-        // Sidebar on mobile
         if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth < 1024) {
             if (!sidebar.classList.contains('hidden')){
                  sidebar.classList.add('hidden');
                  sidebar.classList.remove('flex');
             }
         }
-        // Apps menu
         if (!appsMenu.contains(e.target) && !appsMenuButton.contains(e.target)) {
             if (!appsMenu.classList.contains('hidden')){
                 appsMenu.classList.add('hidden');
             }
         }
       });
-      
-      // Removed the scroll-based active link logic as we are transitioning to multiple pages.
-      // The links now rely on the actual page URL to determine the active link (which you'd implement 
-      // on the other pages by adjusting the 'active-link' class).
-
     });
   </script>
 </body>
