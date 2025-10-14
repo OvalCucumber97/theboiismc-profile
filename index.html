@@ -7,17 +7,39 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <div class="w-64 bg-blue-900 text-white p-6">
-      <h1 class="text-2xl font-semibold mb-8">My Account</h1>
-      <ul class="space-y-4">
-        <li><a href="#profile" class="hover:bg-blue-700 px-4 py-2 rounded block">Profile</a></li>
-        <li><a href="#settings" class="hover:bg-blue-700 px-4 py-2 rounded block">Settings</a></li>
-        <li><a href="#logout" class="hover:bg-blue-700 px-4 py-2 rounded block">Log Out</a></li>
+    <div class="w-72 bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6">
+      <h1 class="text-3xl font-semibold mb-10">My Account</h1>
+      <ul class="space-y-6">
+        <li><a href="#profile" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
+            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 0a10 10 0 100 20A10 10 0 0010 0zm0 18a8 8 0 110-16 8 8 0 010 16z"></path></svg>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li><a href="#settings" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
+            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M6 2L5 3l3 3h4L16 3l-1-1H6z"></path></svg>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li><a href="#privacy" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
+            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 2a8 8 0 11-8 8 8 8 0 018-8zm0 14a6 6 0 100-12 6 6 0 000 12z"></path></svg>
+            <span>Privacy</span>
+          </a>
+        </li>
+        <li><a href="#notifications" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
+            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 2a8 8 0 11-8 8 8 8 0 018-8zm0 14a6 6 0 100-12 6 6 0 000 12z"></path></svg>
+            <span>Notifications</span>
+          </a>
+        </li>
+        <li><a href="#logout" class="flex items-center space-x-4 hover:bg-blue-700 px-4 py-2 rounded-md transition ease-in-out">
+            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 7l3 3-3 3M3 12h12"></path></svg>
+            <span>Log Out</span>
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -26,34 +48,85 @@
 
       <!-- Profile Section -->
       <section id="profile" class="mb-12">
-        <h1 class="text-3xl font-semibold mb-4">Your Profile</h1>
-        <div class="bg-white shadow-md rounded-lg p-6">
-          <div class="flex items-center space-x-6">
+        <h1 class="text-3xl font-semibold mb-6">Your Profile</h1>
+        <div class="bg-white shadow-lg rounded-lg p-8">
+          <div class="flex items-center space-x-6 mb-6">
             <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full">
             <div>
               <p class="text-xl font-medium">John Doe</p>
               <p class="text-gray-600">johndoe@example.com</p>
-              <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">Edit Profile</button>
+              <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200">Edit Profile</button>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Settings Section -->
-      <section id="settings">
-        <h1 class="text-3xl font-semibold mb-4">Account Settings</h1>
-        <div class="bg-white shadow-md rounded-lg p-6">
-          <form id="settings-form" class="space-y-6">
+      <section id="settings" class="mb-12">
+        <h1 class="text-3xl font-semibold mb-6">Account Settings</h1>
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <!-- General Settings -->
+          <div class="bg-white shadow-lg rounded-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">General Settings</h2>
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="text-lg font-medium">Full Name</label>
+                <input type="text" id="name" value="John Doe" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+              </div>
+              <div>
+                <label for="email" class="text-lg font-medium">Email</label>
+                <input type="email" id="email" value="johndoe@example.com" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+              </div>
+            </div>
+            <button class="mt-4 bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 transition duration-200">Save Changes</button>
+          </div>
+
+          <!-- Security Settings -->
+          <div class="bg-white shadow-lg rounded-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">Security</h2>
+            <div class="space-y-4">
+              <div>
+                <label for="password" class="text-lg font-medium">Change Password</label>
+                <input type="password" id="password" placeholder="********" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+              </div>
+              <div>
+                <label for="2fa" class="text-lg font-medium">Two-Factor Authentication</label>
+                <select id="2fa" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+                  <option>Enabled</option>
+                  <option>Disabled</option>
+                </select>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200">Update Security</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Privacy Section -->
+      <section id="privacy" class="mb-12">
+        <h1 class="text-3xl font-semibold mb-6">Privacy Settings</h1>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h2 class="text-2xl font-semibold mb-4">Manage Privacy</h2>
+          <div class="space-y-4">
             <div>
-              <label for="name" class="block text-lg font-medium">Full Name</label>
-              <input type="text" id="name" value="John Doe" class="w-full p-3 border border-gray-300 rounded-lg mt-2">
+              <label for="profile-visibility" class="text-lg font-medium">Profile Visibility</label>
+              <select id="profile-visibility" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+                <option>Public</option>
+                <option>Friends Only</option>
+                <option>Private</option>
+              </select>
             </div>
             <div>
-              <label for="email" class="block text-lg font-medium">Email</label>
-              <input type="email" id="email" value="johndoe@example.com" class="w-full p-3 border border-gray-300 rounded-lg mt-2">
+              <label for="data-sharing" class="text-lg font-medium">Data Sharing</label>
+              <select id="data-sharing" class="w-full p-3 border border-gray-300 rounded-md mt-2">
+                <option>Allow</option>
+                <option>Do Not Allow</option>
+              </select>
             </div>
-            <button type="submit" class="mt-4 bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700">Save Changes</button>
-          </form>
+          </div>
+          <button class="mt-4 bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700 transition duration-200">Save Privacy Settings</button>
         </div>
       </section>
 
