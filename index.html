@@ -11,15 +11,18 @@
 </head>
 <body class="bg-gray-100">
 
-  <div class="flex min-h-screen">
+  <div class="flex min-h-screen flex-col lg:flex-row">
 
     <!-- Sidebar -->
-    <div class="w-72 bg-white shadow-lg p-6 space-y-6">
+    <div class="w-full lg:w-72 bg-white shadow-lg p-6 space-y-6">
+
+      <!-- Logo and Brand Name -->
       <div class="flex items-center space-x-4 mb-8">
-        <!-- Logo -->
         <img src="https://via.placeholder.com/40?text=T" alt="TheBoiisMC Logo" class="rounded-full">
         <h1 class="text-2xl font-semibold text-gray-900">TheBoiisMC</h1>
       </div>
+
+      <!-- Sidebar Links -->
       <ul class="space-y-4">
         <li><a href="#profile" class="flex items-center space-x-4 hover:bg-gray-200 px-4 py-2 rounded-md transition ease-in-out">
             <i class="fas fa-user-circle text-lg text-gray-600"></i>
@@ -49,13 +52,13 @@
       </ul>
     </div>
 
-    <!-- Main content -->
-    <div class="flex-1 p-8">
+    <!-- Main Content Area -->
+    <div class="flex-1 p-8 space-y-12">
 
       <!-- Hero Section -->
       <section class="bg-gray-50 p-8 rounded-lg shadow-lg mb-12">
-        <div class="flex items-center space-x-6 mb-8">
-          <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-20 h-20 rounded-full">
+        <div class="flex flex-col lg:flex-row items-center space-x-6 mb-8">
+          <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full mb-4 lg:mb-0">
           <div>
             <h1 class="text-3xl font-semibold text-gray-800">Welcome, John Doe</h1>
             <p class="text-gray-600">Manage your account and settings here</p>
@@ -81,7 +84,7 @@
       <!-- Settings Section -->
       <section id="settings" class="mb-12">
         <h1 class="text-3xl font-semibold mb-6">Account Settings</h1>
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           <!-- General Settings -->
           <div class="bg-white shadow-lg rounded-lg p-6 space-y-6">
@@ -121,9 +124,9 @@
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- Footer Section -->
       <footer class="mt-16 text-center text-gray-600">
-        <p class="text-sm">Your data is secured and protected. For more information, check our <a href="/privacy-policy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+        <p class="text-sm">Your data is secured and protected. For more information, check our <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
         <p class="text-sm mt-4">Powered by TheBoiisMC &bull; All rights reserved.</p>
       </footer>
 
